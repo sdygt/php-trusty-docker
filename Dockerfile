@@ -132,7 +132,7 @@ RUN set -xe; \
 	apt-get purge -y --auto-remove $fetchDeps
 
 COPY docker-php-source /usr/local/bin/
-
+RUN ["chmod", "+x", "/usr/local/bin/docker-php-source"]
 RUN set -xe \
 	&& buildDeps=" \
 		$PHP_EXTRA_BUILD_DEPS \
