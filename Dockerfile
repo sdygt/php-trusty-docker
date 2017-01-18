@@ -1,5 +1,6 @@
 FROM ubuntu:trusty
 
+ENV LC_ALL C.UTF-8
 RUN apt-get update && \
     apt-get install -y python-software-properties software-properties-common
 RUN add-apt-repository -y ppa:ondrej/php && \
