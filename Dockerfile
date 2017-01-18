@@ -1,7 +1,9 @@
 FROM ubuntu:trusty
 
-RUN apt-get install -y python-software-properties software-properties-common
+RUN apt-get update && \
+    apt-get install -y python-software-properties software-properties-common
 RUN add-apt-repository -y ppa:ondrej/php && \
+    apt-get update && \
     apt-get -y install apache2 libapache2-mod-php7.0 php7.0 php7.0-cli php7.0-common php7.0-curl php7.0-gd php7.0-mysql php7.0-sqlite php7.0-xml php7.0-zip php7.0-mbstring php7.0-mcrypt php7.0-intl php7.0-soap php7.0-imap php-imagick && apt-get clean && rm -r /var/lib/apt/lists/* && \
     sed -i -e 's/max_execution_time = 30/max_execution_time = 60/g' /etc/php/7.0/apache2/php.ini && \
     sed -i -e 's/upload_max_filesize = 2M/upload_max_filesize = 16M/g' /etc/php/7.0/apache2/php.ini && \
